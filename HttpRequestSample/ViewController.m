@@ -7,6 +7,7 @@
 //
 
 #import "ViewController.h"
+#import "RequestManager.h"
 
 @interface ViewController ()
 
@@ -22,6 +23,18 @@
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (IBAction)go:(id)sender
+{
+    [[RequestManager defaultManager] requestWith:[NSURL URLWithString:@"<put your url here>"] param:@{} httpMethod:kGetMethod usePostBody:NO completion:^(PFRequestTag tag, NSData *responseData){
+        
+        //do your job
+        
+    } falure:^(PFRequestTag tag, NSError *error){
+    
+        //fail to make request
+    }];
 }
 
 @end
