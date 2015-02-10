@@ -14,8 +14,8 @@
 		B37030791A8A5FFD00C7BDD1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B37030781A8A5FFD00C7BDD1 /* Images.xcassets */; };
 		B370307C1A8A5FFD00C7BDD1 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B370307A1A8A5FFD00C7BDD1 /* LaunchScreen.xib */; };
 		B37030881A8A5FFD00C7BDD1 /* HttpRequestSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B37030871A8A5FFD00C7BDD1 /* HttpRequestSampleTests.m */; };
-		B37030961A8A604000C7BDD1 /* BaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37030931A8A604000C7BDD1 /* BaseRequest.m */; };
-		B37030971A8A604000C7BDD1 /* RequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B37030951A8A604000C7BDD1 /* RequestManager.m */; };
+		B370309C1A8A631E00C7BDD1 /* LCBaseRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = B37030991A8A631E00C7BDD1 /* LCBaseRequest.m */; };
+		B370309D1A8A631E00C7BDD1 /* LCRequestManager.m in Sources */ = {isa = PBXBuildFile; fileRef = B370309B1A8A631E00C7BDD1 /* LCRequestManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,10 +42,10 @@
 		B37030811A8A5FFD00C7BDD1 /* HttpRequestSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HttpRequestSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B37030861A8A5FFD00C7BDD1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B37030871A8A5FFD00C7BDD1 /* HttpRequestSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HttpRequestSampleTests.m; sourceTree = "<group>"; };
-		B37030921A8A604000C7BDD1 /* BaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseRequest.h; sourceTree = "<group>"; };
-		B37030931A8A604000C7BDD1 /* BaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseRequest.m; sourceTree = "<group>"; };
-		B37030941A8A604000C7BDD1 /* RequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestManager.h; sourceTree = "<group>"; };
-		B37030951A8A604000C7BDD1 /* RequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestManager.m; sourceTree = "<group>"; };
+		B37030981A8A631E00C7BDD1 /* LCBaseRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCBaseRequest.h; sourceTree = "<group>"; };
+		B37030991A8A631E00C7BDD1 /* LCBaseRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCBaseRequest.m; sourceTree = "<group>"; };
+		B370309A1A8A631E00C7BDD1 /* LCRequestManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LCRequestManager.h; sourceTree = "<group>"; };
+		B370309B1A8A631E00C7BDD1 /* LCRequestManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LCRequestManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -129,10 +129,10 @@
 		B37030911A8A604000C7BDD1 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				B37030921A8A604000C7BDD1 /* BaseRequest.h */,
-				B37030931A8A604000C7BDD1 /* BaseRequest.m */,
-				B37030941A8A604000C7BDD1 /* RequestManager.h */,
-				B37030951A8A604000C7BDD1 /* RequestManager.m */,
+				B37030981A8A631E00C7BDD1 /* LCBaseRequest.h */,
+				B37030991A8A631E00C7BDD1 /* LCBaseRequest.m */,
+				B370309A1A8A631E00C7BDD1 /* LCRequestManager.h */,
+				B370309B1A8A631E00C7BDD1 /* LCRequestManager.m */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -237,10 +237,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B37030971A8A604000C7BDD1 /* RequestManager.m in Sources */,
-				B37030961A8A604000C7BDD1 /* BaseRequest.m in Sources */,
 				B37030741A8A5FFD00C7BDD1 /* ViewController.m in Sources */,
+				B370309C1A8A631E00C7BDD1 /* LCBaseRequest.m in Sources */,
 				B37030711A8A5FFD00C7BDD1 /* AppDelegate.m in Sources */,
+				B370309D1A8A631E00C7BDD1 /* LCRequestManager.m in Sources */,
 				B370306E1A8A5FFD00C7BDD1 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

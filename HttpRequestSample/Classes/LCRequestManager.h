@@ -7,13 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "BaseRequest.h"
+#import "LCBaseRequest.h"
 
 static const NSTimeInterval baseTimeout = 60.f;
 
-@interface RequestManager : NSObject
+@interface LCRequestManager : NSObject
 
-+ (RequestManager*)defaultManager;
++ (LCRequestManager*)defaultManager;
 
 - (void)requestWith:(NSURL*)url param:(NSDictionary*)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure;
 

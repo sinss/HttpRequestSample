@@ -6,17 +6,17 @@
 //  Copyright (c) 2015 Good-idea Consulgint Inc. All rights reserved.
 //
 
-#import "RequestManager.h"
+#import "LCRequestManager.h"
 
-@implementation RequestManager
+@implementation LCRequestManager
 
-+ (RequestManager*)defaultManager
++ (LCRequestManager*)defaultManager
 {
     static id instance = nil;
     static dispatch_once_t onceToken;
     
     dispatch_once(&onceToken, ^{
-        instance = [[RequestManager alloc] init];
+        instance = [[LCRequestManager alloc] init];
     });
     
     return instance;
@@ -25,7 +25,7 @@
 #pragma mark Shared method
 - (void)startRequestWithUrl:(NSURL*)url params:(NSDictionary *)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure
 {
-    BaseRequest *request = [[BaseRequest alloc] initWithUrl:url param:param timeout:baseTimeout httpMethod:method userPostBody:userPostBody];
+    LCBaseRequest *request = [[LCBaseRequest alloc] initWithUrl:url param:param timeout:baseTimeout httpMethod:method userPostBody:userPostBody];
     [request setCompletion:completion];
     [request setFalure:falure];
     

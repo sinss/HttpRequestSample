@@ -7,7 +7,7 @@
 //
 
 #import "ViewController.h"
-#import "RequestManager.h"
+#import "LCRequestManager.h"
 
 @interface ViewController ()
 
@@ -27,7 +27,7 @@
 
 - (IBAction)go:(id)sender
 {
-    [[RequestManager defaultManager] requestWith:[NSURL URLWithString:@"<put your url here>"] param:@{} httpMethod:kGetMethod usePostBody:NO completion:^(PFRequestTag tag, NSData *responseData){
+    [[LCRequestManager defaultManager] requestWith:[NSURL URLWithString:@"<put your url here>"] param:@{} httpMethod:kGetMethod usePostBody:NO completion:^(PFRequestTag tag, NSData *responseData){
         
         //do your job
         
