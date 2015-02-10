@@ -21,3 +21,4 @@ Less complex , easier to integrate
     }];
 ```
   - Put your parameters in params as a NSDictionary
+  - Your just need put your url as 'http://www.somehost.com' instead of 'http://www.somehost.com?param1=XXX'
