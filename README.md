@@ -1,7 +1,12 @@
 # HttpRequestSample
 Less complex , easier to integrate
 
-#how to use 
+#Purpose
+
+ -  If your wanna make a simple http request.
+ -  Support block , make your code clearly
+
+#How to use 
 
 ```objective-c
 #import "LCRequestManager.h"
