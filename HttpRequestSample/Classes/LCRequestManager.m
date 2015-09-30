@@ -8,6 +8,12 @@
 
 #import "LCRequestManager.h"
 
+@interface LCRequestManager()
+
+@property (nonatomic, strong) NSOperationQueue *communicationQueue;
+
+@end
+
 @implementation LCRequestManager
 
 + (LCRequestManager*)defaultManager
@@ -22,19 +28,32 @@
     return instance;
 }
 
+- (id)init
+{
+    self = [super init];
+    if (self)
+    {
+        _communicationQueue = [[NSOperationQueue alloc] init];
+        _communicationQueue.qualityOfService = NSQualityOfServiceUserInteractive;
+    }
+    return self;
+}
+
 #pragma mark Shared method
-- (void)startRequestWithUrl:(NSURL*)url params:(NSDictionary *)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure
+- (LCBaseRequest*)fetchRequestWithUrl:(NSURL*)url params:(NSDictionary *)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure
 {
     LCBaseRequest *request = [[LCBaseRequest alloc] initWithUrl:url param:param timeout:baseTimeout httpMethod:method userPostBody:userPostBody];
     [request setCompletion:completion];
-    [request setFalure:falure];
+    [request setFailure:falure];
+    request.qualityOfService = NSQualityOfServiceBackground;
+    [request startInQueue:self.communicationQueue];
     
-    [request start];
+    return request;
 }
 
-- (void)requestWith:(NSURL*)url param:(NSDictionary*)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure
+- (LCBaseRequest*)fetchRequestWith:(NSURL*)url param:(NSDictionary*)param httpMethod:(NSString *)method usePostBody:(BOOL)userPostBody completion:(completionBlock)completion falure:(falureBlock)falure
 {
-    [self startRequestWithUrl:url params:param httpMethod:method usePostBody:userPostBody completion:completion falure:falure];
+    return [self fetchRequestWithUrl:url params:param httpMethod:method usePostBody:userPostBody completion:completion falure:falure];
 }
 
 @end

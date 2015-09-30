@@ -27,12 +27,15 @@
 
 - (IBAction)go:(id)sender
 {
-    [[LCRequestManager defaultManager] requestWith:[NSURL URLWithString:@"<put your url here>"] param:@{} httpMethod:kGetMethod usePostBody:NO completion:^(PFRequestTag tag, NSData *responseData){
+    [[LCRequestManager defaultManager] fetchRequestWith:[NSURL URLWithString:@"<<url>>"] param:@{} httpMethod:kGetMethod usePostBody:NO completion:^(LCRequestTag tag, NSInteger statusCode, NSData *responseData){
         
         //do your job
+        NSString *re = [[NSString alloc] initWithData:responseData encoding:NSUTF8StringEncoding];
+        NSLog(@"result : %@", re);
         
-    } falure:^(PFRequestTag tag, NSError *error){
+    } falure:^(LCRequestTag tag, NSInteger statucCode, NSError *error){
     
+        NSLog(@"fail : %@", error);
         //fail to make request
     }];
 }

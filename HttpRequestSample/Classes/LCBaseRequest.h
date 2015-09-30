@@ -12,29 +12,32 @@
 #define kAppModel @"app-model"
 #define kSysVersion @"app-Version"
 #define kUserAccount @"app-User"
-#define kUserToken @"app-token"
 
 #define kGetMethod @"GET"
 #define kPostMethod @"POST"
 #define kPutMethod @"PUT"
 
-#define fakeToken @"111111111111"
-
 #define appVersion [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleVersion"]
 
-typedef NS_ENUM(NSUInteger, PFRequestTag)
-{
-    PFRequestTagDefault,
+typedef NS_ENUM(NSInteger, LCStatus) {
+    LCStatusSSLAuthenticationError = -31,
 };
 
-typedef void (^completionBlock) (PFRequestTag tag, NSData *responseData);
-typedef void (^falureBlock) (PFRequestTag tag, NSError *error);
-
-@interface LCBaseRequest : NSObject <NSURLConnectionDataDelegate>
+typedef NS_ENUM(NSUInteger, LCRequestTag)
 {
-    PFRequestTag tag;
+    LCRequestTagDefault,
+};
+
+typedef void (^completionBlock) (LCRequestTag tag, NSInteger statusCode, NSData *responseData);
+typedef void (^falureBlock) (LCRequestTag tag, NSInteger statusCode, NSError *error);
+
+@protocol LCRequestDelegate;
+@interface LCBaseRequest : NSOperation
+{
+    LCRequestTag tag;
 }
 
+@property (nonatomic, getter=isExcuting) BOOL excuting;
 @property (nonatomic, assign) BOOL userPostBody;
 @property (nonatomic, strong) NSURLConnection *conn;
 @property (nonatomic, strong) NSMutableURLRequest *request;
@@ -44,15 +47,26 @@ typedef void (^falureBlock) (PFRequestTag tag, NSError *error);
 @property (nonatomic, strong) NSString *method;
 
 @property (nonatomic, copy) completionBlock completion;
-@property (nonatomic, copy) falureBlock falure;
+@property (nonatomic, copy) falureBlock failure;
+
+@property (nonatomic, weak) id<LCRequestDelegate>delegate;
 
 @property (nonatomic, strong) NSMutableData *responseData;
+@property (nonatomic, assign) NSInteger responseCode;
 
-- (id)initWithUrl:(NSURL*)url param:(NSDictionary*)dict timeout:(NSTimeInterval)timeout httpMethod:(NSString*)method userPostBody:(BOOL)usePostBody;
+- (instancetype)initWithUrl:(NSURL*)url param:(NSDictionary*)dict timeout:(NSTimeInterval)timeout httpMethod:(NSString*)method userPostBody:(BOOL)usePostBody;
 
-- (void)start;
-- (void)createRequest;
-- (void)generateRequestHeader;
-- (NSString*)generateParams;
+- (instancetype)initWithUrl:(NSURL*)url param:(NSDictionary*)dict timeout:(NSTimeInterval)timeout httpMethod:(NSString*)method userPostBody:(BOOL)usePostBody tag:(LCRequestTag)tag;
+
+
+- (void)startInQueue:(NSOperationQueue*)queue;
+- (void)finish;
+
+@end
+
+@protocol LCRequestDelegate <NSObject>
+
+- (void)requestDidFinish:(LCBaseRequest*)request;
+- (void)requestDidFail:(LCBaseRequest*)request;
 
 @end

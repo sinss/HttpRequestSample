@@ -432,6 +432,7 @@
 				B370308D1A8A5FFD00C7BDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		B370308E1A8A5FFD00C7BDD1 /* Build configuration list for PBXNativeTarget "HttpRequestSampleTests" */ = {
 			isa = XCConfigurationList;
@@ -440,6 +441,7 @@
 				B37030901A8A5FFD00C7BDD1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
